@@ -26,7 +26,7 @@
       </dl>
     </li>
   </ul>
-  <Step :title="selectedTrack.title" :details="selectedTrack.details" v-if="selectedTrack" />
+  <Step v-bind="selectedTrack" v-if="selectedTrack" />
 </template>
 
 <script setup>
@@ -45,6 +45,11 @@ const tracks = ref([
     date: '2d ago',
     dateTime: '2023-01-23T22:34Z',
     status: 'active',
+    links: [{
+      category: 'Learn',
+      title: 'Goodreads Top Books on Communication',
+      href: 'https://www.goodreads.com/list/show/84868.Communication_Skills'
+    }]
   },
   {
     id: 2,

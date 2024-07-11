@@ -27,9 +27,20 @@
                         </div>
                       </div>
                     </div>
+
                     <div class="relative mt-6 flex-1 px-4 sm:px-6">
                       <p>{{ details }}</p>
                     </div>
+
+                    <div class="relative mt-6 flex-1 px-4 sm:px-6">
+                      <p v-for="link in links" :key="link.id">
+                        <span
+                          class="inline-flex items-center rounded-md bg-purple-100 px-2 py-1 text-xs font-medium text-purple-700">{{
+                            link.category }}</span>
+                        <a :href="link.href">{{ link.title }}</a>
+                      </p>
+                    </div>
+
                   </div>
                   <div class="flex flex-shrink-0 justify-end px-4 py-4">
                     <button type="button"
@@ -55,7 +66,7 @@ import { XMarkIcon } from '@heroicons/vue/24/outline'
 
 const open = ref(true)
 
-const props = defineProps(['title', 'details'])
+const props = defineProps(['title', 'details', 'links'])
 
 watch(() => props.title, () => {
   open.value = true
