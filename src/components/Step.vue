@@ -35,7 +35,9 @@
                         <span
                           class="inline-flex items-center rounded-md bg-purple-100 px-2 py-1 text-xs font-medium text-purple-700">{{
                             link.category }}</span>
-                        <a :href="link.href" target="_blank" class="hover:underline">{{ link.title }}</a>
+                        <a :href="link.href" target="_blank" :class="{ 'hover:underline': link.href }">
+                          {{ link.title }}
+                        </a>
                       </div>
                       </p>
                     </div>
