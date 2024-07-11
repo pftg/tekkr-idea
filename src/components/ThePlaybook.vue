@@ -1,37 +1,38 @@
 <template>
   <ul role="list" class="divide-y divide-gray-100">
-    <li v-for="track in tracks" :key="track.id"
-      class="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap">
-      <div>
-        <input type="checkbox" :checked="track.selected" @change="toggleSelection(track.id)" />
-        <div class="relative flex items-start gap-x-3">
-          <p class="text-sm font-semibold leading-6 text-gray-900">
-            <a @click.prevent="showDrawer(track)" href="#" class="hover:underline">
-              <span class="absolute inset-x-0 -top-px bottom-0" />
+    <li v-for="track in tracks" :key="track.id" class="flex items-center gap-x-4 py-5 sm:flex-nowrap">
+      <input type="checkbox" :checked="track.selected" @change="toggleSelection(track.id)" />
+
+      <a @click.prevent="showDrawer(track)" href="#" class="flex-1 flex items-center justify-between gap-x-6 gap-y-4">
+
+        <div>
+          <div class="flex items-start gap-x-3">
+            <p class="text-sm font-semibold leading-6 text-gray-900 hover:underline">
               {{ track.title }}
-            </a>
-          </p>
+            </p>
 
-          <p
-            class="bg-purple-100 inline-flex items-center rounded-md bg-purple-100 px-2 py-1 text-xs font-medium text-purple-700">
-            {{ track.category }}</p>
+            <p
+              class="bg-purple-100 inline-flex items-center rounded-md bg-purple-100 px-2 py-1 text-xs font-medium text-purple-700">
+              {{ track.category }}</p>
+          </div>
+
+          <div class="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
+            <p>
+              <a :href="track.author.href" class="hover:underline">{{ track.author.name }}</a>
+            </p>
+            <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 fill-current">
+              <circle cx="1" cy="1" r="1" />
+            </svg>
+            <p>
+              <time :datetime="track.dateTime">{{ track.date }}</time>
+            </p>
+          </div>
         </div>
 
-        <div class="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
-          <p>
-            <a :href="track.author.href" class="hover:underline">{{ track.author.name }}</a>
-          </p>
-          <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 fill-current">
-            <circle cx="1" cy="1" r="1" />
-          </svg>
-          <p>
-            <time :datetime="track.dateTime">{{ track.date }}</time>
-          </p>
-        </div>
-      </div>
-      <dl class="flex w-full flex-none justify-between gap-x-8 sm:w-auto">
-        <ChevronRightIcon class="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-      </dl>
+        <dl class="flex w-full flex-none justify-between gap-x-8 sm:w-auto">
+          <ChevronRightIcon class="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
+        </dl>
+      </a>
     </li>
   </ul>
   <Step v-bind="selectedTrack" v-if="selectedTrack" />
