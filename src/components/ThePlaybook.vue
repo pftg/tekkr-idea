@@ -1,7 +1,7 @@
 <template>
   <ul role="list" class="divide-y divide-gray-100">
     <li v-for="track in tracks" :key="track.id"
-      class="relative flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap">
+      class="relative x flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap">
       <div>
         <p class="text-sm font-semibold leading-6 text-gray-900">
           <a @click.prevent="showDrawer(track)" href="#" class="hover:underline">
@@ -37,8 +37,9 @@ import { ref } from 'vue'
 const tracks = ref([
   {
     id: 1,
-    title: 'Atque perspiciatis et et aut ut porro voluptatem blanditiis?',
-    details: 'Description 1',
+    category: 'Personal Development',
+    title: 'Communication Skills',
+    details: 'The ability to convey ideas clearly and effectively to various stakeholders, including team members, upper management, and cross-functional partners.',
     href: '#',
     author: { name: 'Tekkr', href: '#' },
     date: '2d ago',
@@ -47,8 +48,53 @@ const tracks = ref([
   },
   {
     id: 2,
-    title: 'Et ratione distinctio nesciunt recusandae vel ab?',
-    details: 'Description 2',
+    category: 'Personal Development',
+    title: 'Strategic Thinking and Planning',
+    details: 'The ability to align team activities with broader organizational goals and anticipate future challenges and opportunities.',
+    href: '#',
+    author: { name: 'Tekkr', href: '#' },
+    date: '2d ago',
+    dateTime: '2023-01-23T19:20Z',
+    status: 'active'
+  },
+  {
+    id: 3,
+    category: 'People Management',
+    title: 'Leadership and Team Management',
+    details: 'The ability to inspire, motivate, and guide a team towards achieving common goals.',
+    href: '#',
+    author: { name: 'Tekkr', href: '#' },
+    date: '2d ago',
+    dateTime: '2023-01-23T19:20Z',
+    status: 'active'
+  },
+  {
+    id: 4,
+    category: 'People Management',
+    title: 'Performance Management and Development',
+    details: 'The ability to evaluate team performance, provide constructive feedback, and foster continuous professional growth.',
+    href: '#',
+    author: { name: 'Tekkr', href: '#' },
+    date: '2d ago',
+    dateTime: '2023-01-23T19:20Z',
+    status: 'active'
+  },
+  {
+    id: 5,
+    category: 'Software Development Life Cycle',
+    title: 'Project Management',
+    details: 'The ability to plan, execute, and oversee projects to ensure they are completed on time, within budget, and to the required quality standards.',
+    href: '#',
+    author: { name: 'Tekkr', href: '#' },
+    date: '2d ago',
+    dateTime: '2023-01-23T19:20Z',
+    status: 'active'
+  },
+  {
+    id: 6,
+    category: 'Software Development Life Cycle',
+    title: 'Maintaining Technical Proficiency',
+    details: 'Maintaining a strong understanding of the technical aspects of software development to make informed decisions and provide effective guidance to the team.',
     href: '#',
     author: { name: 'Tekkr', href: '#' },
     date: '2d ago',
