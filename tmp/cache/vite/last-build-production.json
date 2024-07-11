@@ -1,0 +1,7 @@
+{
+  "success": true,
+  "errors": "\nwarn - The `purge`/`content` options have changed in Tailwind CSS v3.0.\nwarn - Update your configuration file to eliminate this warning.\nwarn - https://tailwindcss.com/docs/upgrade-guide#configure-content-sources\n",
+  "timestamp": "2024-07-11 14:32:29",
+  "vite_ruby": "3.5.0",
+  "digest": "de0b640329603536d8740b13033f5f00ca6e3103"
+}
