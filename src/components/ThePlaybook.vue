@@ -3,12 +3,19 @@
     <li v-for="track in tracks" :key="track.id"
       class="relative x flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap">
       <div>
-        <p class="text-sm font-semibold leading-6 text-gray-900">
-          <a @click.prevent="showDrawer(track)" href="#" class="hover:underline">
-            <span class="absolute inset-x-0 -top-px bottom-0" />
-            {{ track.title }}
-          </a>
-        </p>
+        <div class="flex items-start gap-x-3">
+          <p class="text-sm font-semibold leading-6 text-gray-900">
+            <a @click.prevent="showDrawer(track)" href="#" class="hover:underline">
+              <span class="absolute inset-x-0 -top-px bottom-0" />
+              {{ track.title }}
+            </a>
+          </p>
+
+          <p
+            class="bg-purple-100 inline-flex items-center rounded-md bg-purple-100 px-2 py-1 text-xs font-medium text-purple-700">
+            {{ track.category }}</p>
+        </div>
+
         <div class="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
           <p>
             <a :href="track.author.href" class="hover:underline">{{ track.author.name }}</a>
