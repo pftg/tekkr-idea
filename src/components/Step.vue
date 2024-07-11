@@ -5,12 +5,12 @@
 
       <div class="fixed inset-0 overflow-hidden">
         <div class="absolute inset-0 overflow-hidden">
-          <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+          <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10 sm:pl-16">
             <TransitionChild as="template" enter="transform transition ease-in-out duration-500 sm:duration-700"
               enter-from="translate-x-full" enter-to="translate-x-0"
               leave="transform transition ease-in-out duration-500 sm:duration-700" leave-from="translate-x-0"
               leave-to="translate-x-full">
-              <DialogPanel class="pointer-events-auto w-screen max-w-md">
+              <DialogPanel class="pointer-events-auto w-screen max-w-2xl">
                 <div class="flex h-full flex-col divide-y divide-gray-200 bg-white shadow-xl">
                   <div class="flex min-h-0 flex-1 flex-col overflow-y-scroll py-6">
                     <div class="px-4 sm:px-6">
@@ -30,14 +30,13 @@
 
                     <div class="relative mt-6 flex-1 px-4 sm:px-6">
                       <p>{{ details }}</p>
-                    </div>
-
-                    <div class="relative mt-6 flex-1 px-4 sm:px-6">
-                      <p v-for="link in links" :key="link.id">
+                      <p class="mt-6 px-4 sm:px-6" v-for="link in links" :key="link.id">
+                      <div class="flex items-start gap-x-3">
                         <span
                           class="inline-flex items-center rounded-md bg-purple-100 px-2 py-1 text-xs font-medium text-purple-700">{{
                             link.category }}</span>
-                        <a :href="link.href">{{ link.title }}</a>
+                        <a :href="link.href" target="_blank" class="hover:underline">{{ link.title }}</a>
+                      </div>
                       </p>
                     </div>
 
@@ -46,8 +45,6 @@
                     <button type="button"
                       class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400"
                       @click="open = false">Cancel</button>
-                    <button type="submit"
-                      class="ml-4 inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Save</button>
                   </div>
                 </div>
               </DialogPanel>
