@@ -52,11 +52,39 @@ const tracks = ref([
     date: '2d ago',
     dateTime: '2023-01-23T22:34Z',
     status: 'active',
-    links: [{
-      category: 'Learn',
-      title: 'Goodreads Top Books on Communication',
-      href: 'https://www.goodreads.com/list/show/84868.Communication_Skills'
-    }]
+    links: [
+      {
+        category: 'Learn',
+        title: 'Goodreads Top Books on Communication',
+        href: 'https://www.goodreads.com/list/show/84868.Communication_Skills'
+      },
+      {
+        category: 'Learn',
+        title: 'Active Listening',
+        href: 'https://www.mindtools.com/az4wxv7/active-listening'
+      },
+      {
+        category: 'Learn',
+        title: '9 Must-Read Books From Harvard to Make You a Stronger Communicator',
+        href: 'https://www.forbes.com/sites/rachelwells/2024/02/05/5-leadership-books-to-improve-your-communication-skills-in-2024/'
+      },
+      {
+        category: 'Practice',
+        title: 'Interactive Online Simulations',
+        href: null
+      },
+      {
+        category: 'Community',
+        title: '“Ask the Expert” sessions',
+        href: null
+      },
+      {
+        category: 'Community',
+        title: 'Mock Interviews',
+        href: null
+      },
+
+    ]
   },
   {
     id: 2,
