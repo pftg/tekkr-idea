@@ -1,9 +1,10 @@
 <template>
   <ul role="list" class="divide-y divide-gray-100">
     <li v-for="track in tracks" :key="track.id"
-      class="relative x flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap">
+      class="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap">
       <div>
-        <div class="flex items-start gap-x-3">
+        <input type="checkbox" :checked="track.selected" @change="toggleSelection(track.id)" />
+        <div class="relative flex items-start gap-x-3">
           <p class="text-sm font-semibold leading-6 text-gray-900">
             <a @click.prevent="showDrawer(track)" href="#" class="hover:underline">
               <span class="absolute inset-x-0 -top-px bottom-0" />
@@ -39,11 +40,12 @@
 <script setup>
 import { ChatBubbleLeftIcon, CheckCircleIcon, ChevronRightIcon } from '@heroicons/vue/24/outline'
 import Step from './Step.vue'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const tracks = ref([
   {
     id: 1,
+    selected: false,
     category: 'Personal Development',
     title: 'Communication Skills',
     details: 'The ability to convey ideas clearly and effectively to various stakeholders, including team members, upper management, and cross-functional partners.',
@@ -88,6 +90,7 @@ const tracks = ref([
   },
   {
     id: 2,
+    selected: false,
     category: 'Personal Development',
     title: 'Strategic Thinking and Planning',
     details: 'The ability to align team activities with broader organizational goals and anticipate future challenges and opportunities.',
@@ -99,6 +102,7 @@ const tracks = ref([
   },
   {
     id: 3,
+    selected: false,
     category: 'People Management',
     title: 'Leadership and Team Management',
     details: 'The ability to inspire, motivate, and guide a team towards achieving common goals.',
@@ -110,6 +114,7 @@ const tracks = ref([
   },
   {
     id: 4,
+    selected: false,
     category: 'People Management',
     title: 'Performance Management and Development',
     details: 'The ability to evaluate team performance, provide constructive feedback, and foster continuous professional growth.',
@@ -121,6 +126,7 @@ const tracks = ref([
   },
   {
     id: 5,
+    selected: false,
     category: 'Software Development Life Cycle',
     title: 'Project Management',
     details: 'The ability to plan, execute, and oversee projects to ensure they are completed on time, within budget, and to the required quality standards.',
@@ -132,6 +138,7 @@ const tracks = ref([
   },
   {
     id: 6,
+    selected: false,
     category: 'Software Development Life Cycle',
     title: 'Maintaining Technical Proficiency',
     details: 'Maintaining a strong understanding of the technical aspects of software development to make informed decisions and provide effective guidance to the team.',
@@ -148,4 +155,34 @@ const selectedTrack = ref(null)
 const showDrawer = (track) => {
   selectedTrack.value = track
 }
+
+const toggleSelection = (trackId) => {
+  const track = tracks.value.find(t => t.id === trackId)
+  if (track) {
+    track.selected = !track.selected
+    saveSelectionToLocalStorage()
+  }
+}
+
+const saveSelectionToLocalStorage = () => {
+  const selectionState = tracks.value.map(track => ({ id: track.id, selected: track.selected }))
+  localStorage.setItem('trackSelection', JSON.stringify(selectionState))
+}
+
+const loadSelectionFromLocalStorage = () => {
+  const selectionState = JSON.parse(localStorage.getItem('trackSelection'))
+  if (selectionState) {
+    selectionState.forEach(state => {
+      const track = tracks.value.find(t => t.id === state.id)
+      if (track) {
+        track.selected = state.selected
+      }
+    })
+  }
+}
+
+watch(tracks, saveSelectionToLocalStorage, { deep: true })
+
+loadSelectionFromLocalStorage()
+
 </script>
