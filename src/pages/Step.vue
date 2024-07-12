@@ -13,7 +13,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useRoadmapStore } from '@/store/roadmap'
+import { useRoadmapStore } from '@/stores/roadmap'
 import StepDetail from '@/components/StepDetail.vue'
 
 const route = useRoute()
