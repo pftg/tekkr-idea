@@ -15,7 +15,12 @@ export const useRoadmapStore = defineStore('roadmap', {
           'Shadow an engineering manager for a week',
           'Attend a workshop or seminar on engineering management'
         ],
-        completed: false
+        completed: false,
+        links: [
+          { type: 'Learn', title: 'Engineering Management Overview', href: 'https://example.com/learn1' },
+          { type: 'Practice', title: 'Shadow an Engineering Manager', href: '' },
+          { type: 'Community', title: 'Join Engineering Manager Forums', href: 'https://example.com/community1' },
+        ]
       },
       {
         id: 2,
@@ -29,7 +34,27 @@ export const useRoadmapStore = defineStore('roadmap', {
           'Lead a small project',
           'Mentor a junior engineer'
         ],
-        completed: false
+        completed: false,
+        links: [
+          { type: 'Learn', title: 'Leadership Courses', href: 'https://example.com/learn2' },
+          { type: 'Practice', title: 'Lead a Small Project', href: '' },
+          { type: 'Community', title: 'Join Leadership Forums', href: 'https://example.com/community2' },
+        ]
+      },
+      {
+        id: 3,
+        title: 'Communication Skills',
+        description: 'The ability to convey ideas clearly and effectively to various stakeholders, including team members, upper management, and cross-functional partners.',
+        completed: false,
+        links: [
+          { type: 'Learn', title: 'Goodreads Top Books on Communication', href: 'https://www.goodreads.com/list/show/84868.Communication_Skills' },
+          { type: 'Learn', title: 'Active Listening', href: 'https://www.mindtools.com/az4wxv7/active-listening' },
+          { type: 'Learn', title: '9 Must-Read Books From Harvard to Make You a Stronger Communicator', href: 'https://www.forbes.com/sites/rachelwells/2024/02/05/5-leadership-books-to-improve-your-communication-skills-in-2024/' },
+          { type: 'Practice', title: 'Interactive Online Simulations', href: '' },
+          { type: 'Practice', title: 'Peer Feedback Exchange Sessions', href: '' },
+          { type: 'Community', title: '“Ask the Expert” sessions', href: '' },
+          { type: 'Community', title: 'Mock Interviews', href: '' },
+        ]
       },
       // Add more steps as needed
     ]

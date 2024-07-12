@@ -22,15 +22,7 @@
                       </div>
                     </div>
                     <div class="relative mt-6 flex-1 px-4 sm:px-6">
-                      <p class="mb-4">{{ step.description }}</p>
-                      <h3 class="text-xl font-semibold mb-2">Guidance</h3>
-                      <ul class="list-disc list-inside mb-4">
-                        <li v-for="guidance in step.guidance" :key="guidance">{{ guidance }}</li>
-                      </ul>
-                      <h3 class="text-xl font-semibold mb-2">Practice and Validation</h3>
-                      <ul class="list-disc list-inside">
-                        <li v-for="practice in step.practice" :key="practice">{{ practice }}</li>
-                      </ul>
+                      <StepDetail :step="step" />
                     </div>
                   </div>
                   <div class="flex flex-shrink-0 justify-end px-4 py-4">
@@ -50,6 +42,7 @@
 import { ref, watch } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
+import StepDetail from '@/components/StepDetail.vue'
 
 const props = defineProps({
   step: {
