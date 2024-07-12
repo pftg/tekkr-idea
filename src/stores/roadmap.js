@@ -1,10 +1,11 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia"
 
 export const useRoadmapStore = defineStore('roadmap', {
   state: () => ({
-    steps: [
+    topics: [
       {
         id: 1,
+        category: "Personal Development",
         title: 'Communication Skills',
         description: 'The ability to convey ideas clearly and effectively to various stakeholders, including team members, upper management, and cross-functional partners.',
         completed: false,
@@ -20,6 +21,7 @@ export const useRoadmapStore = defineStore('roadmap', {
       },
       {
         id: 2,
+        category: "Personal Development",
         title: 'Strategic Thinking and Planning',
         description: 'The ability to align team activities with broader organizational goals and anticipate future challenges and opportunities.',
         completed: false,
@@ -34,6 +36,7 @@ export const useRoadmapStore = defineStore('roadmap', {
       },
       {
         id: 3,
+        category: "People Management",
         title: 'Leadership and Team Management',
         description: 'The ability to inspire, motivate, and guide a team towards achieving common goals.',
         completed: false,
@@ -48,6 +51,19 @@ export const useRoadmapStore = defineStore('roadmap', {
       },
       {
         id: 4,
+        category: "People Management",
+        title: "Performance Management and Development",
+        description: "The ability to evaluate team performance, provide constructive feedback, and foster continuous professional growth.",
+        completed: false,
+        links: [
+          { type: "Learn", title: "Performance evaluation techniques", href: "" },
+          { type: "Learn", title: "coaching and mentoring practices", href: "" },
+          { type: "Learn", title: "employee development programs", href: "" }
+        ]
+      },
+      {
+        id: 5,
+        category: "Software Development Life Cycle",
         title: 'Project Management',
         description: 'The ability to plan, execute, and oversee projects to ensure they are completed on time, within budget, and to the required quality standards.',
         completed: false,
@@ -61,7 +77,8 @@ export const useRoadmapStore = defineStore('roadmap', {
         ]
       },
       {
-        id: 5,
+        id: 6,
+        category: "Software Development Life Cycle",
         title: 'Maintaining Technical Proficiency',
         description: 'Maintaining a strong understanding of the technical aspects of software development to make informed decisions and provide effective guidance to the team.',
         completed: false,
@@ -71,41 +88,66 @@ export const useRoadmapStore = defineStore('roadmap', {
           { type: 'Learn', title: 'Emerging technology trends', href: '' },
           { type: 'Practice', title: 'Troubleshooting and resolving complex technical issues', href: '' },
           { type: 'Practice', title: 'Understanding architecture and design patterns', href: '' },
-          { type: 'Community', title: 'Join Technical Forums', href: '' },
+          { type: "Community", title: "Join Project Management Forums", href: "" },
+        ]
+      },
+      {
+        id: 7,
+        category: "Stakeholder Management",
+        title: "Stakeholder Mapping and Engagement",
+        description: "The ability to identify key stakeholders, understand their needs and expectations, and engage with them effectively to build strong relationships.",
+        completed: false,
+        links: [
+          {
+            type: "Learn",
+            title: "What is Stakeholder Management?",
+            href: "https://miro.com/strategic-planning/what-is-stakeholder-management/#introduction-to-stakeholder-management"
+          },
+          {
+            type: "Practice",
+            title: "How to create a stakeholder map [templates & examples]",
+            href: "https://www.mural.co/blog/stakeholder-mapping"
+          },
+          {
+            type: "Practice",
+            title: "tool | stakeholder engagement wheel",
+            href: "https://www.tamarackcommunity.ca/interactive-tools/stakeholder-engagement-wheel"
+          },
+          { type: "Community", title: "Join Project Management Forums", href: "" },
         ]
       },
     ]
   }),
   getters: {
-    completedSteps(state) {
-      return state.steps.filter(step => step.completed)
+    completedTopics (state) {
+      return state.topics.filter(topic => topic.completed)
     },
-    nextStep(state) {
-      return state.steps.find(step => !step.completed)
+    nextTopic (state) {
+      return state.topics.find(topic => !topic.completed)
     },
-    getStepById: (state) => (id) => {
-      return state.steps.find(step => step.id === id)
+    getTopicById: (state) => (id) => {
+      return state.topics.find(topic => topic.id === id)
     }
   },
   actions: {
-    toggleStepCompletion(id) {
-      const step = this.steps.find(step => step.id === id)
-      if (step) {
-        step.completed = !step.completed
+    toggleTopicCompletion (id) {
+      const topic = this.topics.find(topic => topic.id === id)
+      if (topic) {
+        topic.completed = !topic.completed
         this.saveProgress()
       }
     },
     saveProgress() {
-      const progress = this.steps.map(step => ({ id: step.id, completed: step.completed }))
+      const progress = this.topics.map(topic => ({ id: topic.id, completed: topic.completed }))
       localStorage.setItem('roadmapProgress', JSON.stringify(progress))
     },
     loadProgress() {
       const progress = JSON.parse(localStorage.getItem('roadmapProgress'))
       if (progress) {
-        this.steps.forEach(step => {
-          const savedStep = progress.find(p => p.id === step.id)
-          if (savedStep) {
-            step.completed = savedStep.completed
+        this.topics.forEach(topic => {
+          const savedTopic = progress.find(p => p.id === topic.id)
+          if (savedTopic) {
+            topic.completed = savedTopic.completed
           }
         })
       }

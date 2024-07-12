@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h2 class="text-2xl font-bold mb-4">{{ step.title }}</h2>
-    <p class="mb-4">{{ step.description }}</p>
+    <h2 class="text-2xl font-bold mb-4">{{ topic.title }}</h2>
+    <p class="mb-4">{{ topic.description }}</p>
     <h3 class="text-xl font-semibold mb-2">Guidance</h3>
     <ul class="list-disc list-inside mb-4">
-      <li v-for="guidance in step.guidance" :key="guidance">{{ guidance }}</li>
+      <li v-for="guidance in topic.guidance" :key="guidance">{{ guidance }}</li>
     </ul>
     <h3 class="text-xl font-semibold mb-2">Practice and Validation</h3>
     <ul class="list-disc list-inside mb-4">
-      <li v-for="practice in step.practice" :key="practice">{{ practice }}</li>
+      <li v-for="practice in topic.practice" :key="practice">{{ practice }}</li>
     </ul>
     <h3 class="text-xl font-semibold mb-2">Learning Resources</h3>
     <div v-for="type in linkTypes" :key="type" class="mb-4">
@@ -24,7 +24,7 @@
 
 <script setup>
 const props = defineProps({
-  step: {
+  topic: {
     type: Object,
     required: true
   }
@@ -33,7 +33,7 @@ const props = defineProps({
 const linkTypes = ['Learn', 'Practice', 'Community']
 
 const filteredLinks = (type) => {
-  return props.step.links.filter(link => link.type === type)
+  return props.topic.links.filter(link => link.type === type)
 }
 
 const generateHref = (link) => {

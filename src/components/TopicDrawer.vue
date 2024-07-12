@@ -11,7 +11,7 @@
                   <div class="flex min-h-0 flex-1 flex-col overflow-y-scroll py-6">
                     <div class="px-4 sm:px-6">
                       <div class="flex items-start justify-between">
-                        <DialogTitle class="text-base font-semibold leading-6 text-gray-900">{{ step.title }}</DialogTitle>
+                        <DialogTitle class="text-base font-semibold leading-6 text-gray-900">{{ topic.title }}</DialogTitle>
                         <div class="ml-3 flex h-7 items-center">
                           <button type="button" class="relative rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" @click="closeDrawer">
                             <span class="absolute -inset-2.5" />
@@ -22,7 +22,7 @@
                       </div>
                     </div>
                     <div class="relative mt-6 flex-1 px-4 sm:px-6">
-                      <StepDetail :step="step" />
+                      <TopicDetail :topic="topic" />
                     </div>
                   </div>
                   <div class="flex flex-shrink-0 justify-end px-4 py-4">
@@ -42,10 +42,10 @@
 import { ref, watch } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
-import StepDetail from '@/components/StepDetail.vue'
+import TopicDetail from '@/components/TopicDetail.vue'
 
 const props = defineProps({
-  step: {
+  topic: {
     type: Object,
     required: true
   }
@@ -60,7 +60,7 @@ const closeDrawer = () => {
   emit('close')
 }
 
-watch(() => props.step, () => {
+watch(() => props.topic, () => {
   open.value = true
 })
 </script>
