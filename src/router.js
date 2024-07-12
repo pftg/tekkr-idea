@@ -1,9 +1,17 @@
-import { createRouter, createWebHistory } from "vue-router"
-import Home from "@/pages/Home.vue"
+import { createRouter, createWebHistory } from 'vue-router'
+import Home from '@/pages/Home.vue'
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/:pathMatch(.*)*', redirect: '/' }
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/topic/:id',
+    name: 'Topic',
+    component: Home // Using Home component to handle topic display
+  }
 ]
 
 const router = createRouter({
