@@ -15,47 +15,15 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
 import { useRoadmapStore } from '@/stores/roadmap'
 import TopicDrawer from '@/components/TopicDrawer.vue'
+import { useTopicDrawer } from '@/composables/useTopicDrawer'
 
 const store = useRoadmapStore()
 const topics = store.topics
-const selectedTopic = ref(null)
-const route = useRoute()
-const router = useRouter()
-
-const showDrawer = (topic) => {
-  selectedTopic.value = topic
-  router.push(`/topic/${topic.id}`)
-}
-
-const closeDrawer = () => {
-  selectedTopic.value = null
-  router.push('/')
-}
+const { selectedTopic, showDrawer, closeDrawer } = useTopicDrawer()
 
 const toggleCompletion = (id) => {
   store.toggleTopicCompletion(id)
 }
-
-const checkRouteForTopic = () => {
-  const topicId = route.params.id
-  if (topicId) {
-    const topic = store.getTopicById(Number(topicId))
-    if (topic) {
-      selectedTopic.value = topic
-    }
-  }
-}
-
-onMounted(() => {
-  store.loadProgress()
-  checkRouteForTopic()
-})
-
-watch(route, () => {
-  checkRouteForTopic()
-})
 </script>
