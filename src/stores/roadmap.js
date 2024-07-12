@@ -42,16 +42,31 @@ export const useRoadmapStore = defineStore('roadmap', {
       return state.steps.find(step => !step.completed)
     },
     getStepById: (state) => (id) => {
-      return state.steps.find(step => step.id === parseInt(id))
+      return state.steps.find(step => step.id === id)
     }
   },
   actions: {
-    completeStep(id) {
+    toggleStepCompletion(id) {
       const step = this.steps.find(step => step.id === id)
-      if (step) step.completed = true
+      if (step) {
+        step.completed = !step.completed
+        this.saveProgress()
+      }
     },
-    resetProgress() {
-      this.steps.forEach(step => step.completed = false)
+    saveProgress() {
+      const progress = this.steps.map(step => ({ id: step.id, completed: step.completed }))
+      localStorage.setItem('roadmapProgress', JSON.stringify(progress))
+    },
+    loadProgress() {
+      const progress = JSON.parse(localStorage.getItem('roadmapProgress'))
+      if (progress) {
+        this.steps.forEach(step => {
+          const savedStep = progress.find(p => p.id === step.id)
+          if (savedStep) {
+            step.completed = savedStep.completed
+          }
+        })
+      }
     }
   }
 })
