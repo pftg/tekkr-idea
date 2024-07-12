@@ -63,11 +63,18 @@ import { ref, watch } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 
-const open = ref(true)
+const open = ref(false)
 
 const props = defineProps(['title', 'details', 'links'])
+
+const emit = defineEmits(['close'])
 
 watch(() => props.title, () => {
   open.value = true
 })
+
+const closeDrawer = () => {
+  open.value = false
+  emit('close')
+}
 </script>
