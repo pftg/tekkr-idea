@@ -40,7 +40,7 @@ const generateHref = (link) => {
   if (link.href) {
     return link.href
   } else {
-    return `https://www.google.com/search?q=${link.title}`
+    return `https://perplexity.ai/search?q=${link.title}`
   }
 }
 </script>
