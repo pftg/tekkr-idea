@@ -5,44 +5,6 @@ export const useRoadmapStore = defineStore('roadmap', {
     steps: [
       {
         id: 1,
-        title: 'Introduction to Engineering Management',
-        description: 'Learn the basics of engineering management...',
-        guidance: [
-          'Understand the role of an engineering manager',
-          'Read introductory materials on engineering management'
-        ],
-        practice: [
-          'Shadow an engineering manager for a week',
-          'Attend a workshop or seminar on engineering management'
-        ],
-        completed: false,
-        links: [
-          { type: 'Learn', title: 'Engineering Management Overview', href: 'https://example.com/learn1' },
-          { type: 'Practice', title: 'Shadow an Engineering Manager', href: '' },
-          { type: 'Community', title: 'Join Engineering Manager Forums', href: 'https://example.com/community1' },
-        ]
-      },
-      {
-        id: 2,
-        title: 'Leadership Skills',
-        description: 'Develop your leadership skills...',
-        guidance: [
-          'Study different leadership styles',
-          'Take a leadership course'
-        ],
-        practice: [
-          'Lead a small project',
-          'Mentor a junior engineer'
-        ],
-        completed: false,
-        links: [
-          { type: 'Learn', title: 'Leadership Courses', href: 'https://example.com/learn2' },
-          { type: 'Practice', title: 'Lead a Small Project', href: '' },
-          { type: 'Community', title: 'Join Leadership Forums', href: 'https://example.com/community2' },
-        ]
-      },
-      {
-        id: 3,
         title: 'Communication Skills',
         description: 'The ability to convey ideas clearly and effectively to various stakeholders, including team members, upper management, and cross-functional partners.',
         completed: false,
@@ -56,7 +18,62 @@ export const useRoadmapStore = defineStore('roadmap', {
           { type: 'Community', title: 'Mock Interviews', href: '' },
         ]
       },
-      // Add more steps as needed
+      {
+        id: 2,
+        title: 'Strategic Thinking and Planning',
+        description: 'The ability to align team activities with broader organizational goals and anticipate future challenges and opportunities.',
+        completed: false,
+        links: [
+          { type: 'Learn', title: 'Scenario-Based Learning', href: 'https://www.amazon.com/McKinsey-Mind-Understanding-Implementing-Problem-Solving/dp/0071374299' },
+          { type: 'Learn', title: 'Guest Lectures from Industry Leaders', href: '' },
+          { type: 'Practice', title: 'Strategic Planning Simulations', href: '' },
+          { type: 'Practice', title: 'Case Studies with Open-Ended Questions', href: 'https://store.hbr.org/case-studies/' },
+          { type: 'Community', title: 'Strategic Challenge Competitions', href: 'https://www.kaggle.com/' },
+          { type: 'Community', title: 'Mentorship with Experienced EMs / Strategists', href: '' },
+        ]
+      },
+      {
+        id: 3,
+        title: 'Leadership and Team Management',
+        description: 'The ability to inspire, motivate, and guide a team towards achieving common goals.',
+        completed: false,
+        links: [
+          { type: 'Learn', title: 'Leadership principles', href: '' },
+          { type: 'Learn', title: 'Team dynamics', href: '' },
+          { type: 'Learn', title: 'Conflict resolution techniques', href: '' },
+          { type: 'Practice', title: 'First-time people management', href: '' },
+          { type: 'Practice', title: 'First-time leadership', href: '' },
+          { type: 'Community', title: 'Join Leadership Forums', href: '' },
+        ]
+      },
+      {
+        id: 4,
+        title: 'Project Management',
+        description: 'The ability to plan, execute, and oversee projects to ensure they are completed on time, within budget, and to the required quality standards.',
+        completed: false,
+        links: [
+          { type: 'Learn', title: 'Project management methodologies (e.g., Agile, Scrum, PMP)', href: '' },
+          { type: 'Learn', title: 'Risk management', href: '' },
+          { type: 'Learn', title: 'Resource allocation', href: '' },
+          { type: 'Practice', title: 'Creating project plans', href: '' },
+          { type: 'Practice', title: 'Setting timelines', href: '' },
+          { type: 'Community', title: 'Join Project Management Forums', href: '' },
+        ]
+      },
+      {
+        id: 5,
+        title: 'Maintaining Technical Proficiency',
+        description: 'Maintaining a strong understanding of the technical aspects of software development to make informed decisions and provide effective guidance to the team.',
+        completed: false,
+        links: [
+          { type: 'Learn', title: 'Advanced programming concepts', href: '' },
+          { type: 'Learn', title: 'Software architecture principles', href: '' },
+          { type: 'Learn', title: 'Emerging technology trends', href: '' },
+          { type: 'Practice', title: 'Troubleshooting and resolving complex technical issues', href: '' },
+          { type: 'Practice', title: 'Understanding architecture and design patterns', href: '' },
+          { type: 'Community', title: 'Join Technical Forums', href: '' },
+        ]
+      },
     ]
   }),
   getters: {

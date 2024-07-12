@@ -40,8 +40,7 @@ const generateHref = (link) => {
   if (link.href) {
     return link.href
   } else {
-    const prompt = encodeURIComponent(`Provide resources and information on: ${link.title}`)
-    return `https://chat.openai.com/?prompt=${prompt}`
+    return `https://www.google.com/search?q=${link.title}`
   }
 }
 </script>
