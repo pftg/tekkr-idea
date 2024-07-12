@@ -5,15 +5,22 @@
       <div class="fixed inset-0 overflow-hidden">
         <div class="absolute inset-0 overflow-hidden">
           <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-            <TransitionChild as="template" enter="transform transition ease-in-out duration-500 sm:duration-700" enter-from="translate-x-full" enter-to="translate-x-0" leave="transform transition ease-in-out duration-500 sm:duration-700" leave-from="translate-x-0" leave-to="translate-x-full">
+            <TransitionChild as="template" enter="transform transition ease-in-out duration-500 sm:duration-700"
+                             enter-from="translate-x-full" enter-to="translate-x-0"
+                             leave="transform transition ease-in-out duration-500 sm:duration-700"
+                             leave-from="translate-x-0" leave-to="translate-x-full">
               <DialogPanel class="pointer-events-auto w-screen max-w-md">
                 <div class="flex h-full flex-col divide-y divide-gray-200 bg-white shadow-xl">
                   <div class="flex min-h-0 flex-1 flex-col overflow-y-scroll py-6">
                     <div class="px-4 sm:px-6">
                       <div class="flex items-start justify-between">
-                        <DialogTitle class="text-base font-semibold leading-6 text-gray-900">{{ topic.title }}</DialogTitle>
+                        <DialogTitle class="text-base font-semibold leading-6 text-gray-900">
+                          {{ topic.category }}
+                        </DialogTitle>
                         <div class="ml-3 flex h-7 items-center">
-                          <button type="button" class="relative rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" @click="closeDrawer">
+                          <button type="button"
+                                  class="relative rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                  @click="closeDrawer">
                             <span class="absolute -inset-2.5" />
                             <span class="sr-only">Close panel</span>
                             <XMarkIcon class="h-6 w-6" aria-hidden="true" />
@@ -26,7 +33,10 @@
                     </div>
                   </div>
                   <div class="flex flex-shrink-0 justify-end px-4 py-4">
-                    <button type="button" class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400" @click="closeDrawer">Cancel</button>
+                    <button type="button"
+                            class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400"
+                            @click="closeDrawer">Cancel
+                    </button>
                   </div>
                 </div>
               </DialogPanel>
@@ -39,10 +49,10 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
-import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-import { XMarkIcon } from '@heroicons/vue/24/outline'
-import TopicDetail from '@/components/TopicDetail.vue'
+import { ref, watch } from "vue"
+import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from "@headlessui/vue"
+import { XMarkIcon } from "@heroicons/vue/24/outline"
+import TopicDetail from "@/components/TopicDetail.vue"
 
 const props = defineProps({
   topic: {
@@ -53,11 +63,11 @@ const props = defineProps({
 
 const open = ref(true)
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(["close"])
 
 const closeDrawer = () => {
   open.value = false
-  emit('close')
+  emit("close")
 }
 
 watch(() => props.topic, () => {
